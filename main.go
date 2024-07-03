@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 func main() {
@@ -17,7 +18,7 @@ func main() {
 	}
 
 	app := fiber.New(config)
-	app.Use(middlewares.AddRequestId, middlewares.RequestLogger)
+	app.Use(middlewares.AddRequestId, logger.New())
 
 	api := app.Group("/api").Name("API ")
 
